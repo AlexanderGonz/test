@@ -6,12 +6,19 @@ userDiv.appendChild(userlist)  // agregamos el ul al div usuarios
 
 function onSubmit(event) {
   event.preventDefault()  // Evita la recarga de la poagina
-  let name = document.getElementById("name").value
+  let name = document.getElementById("name").value  // "erick"
   let lastname = document.getElementById("lastname").value
 
-  insertarUsuario(name, lastname)
-}
+  if(name.length < 3 || lastname.length < 3) {
+    alert("el nombre tiene que ser mas largo")
+  }else{
+    insertarUsuario(name, lastname)
+    document.getElementById("name").value = "" // borramos el value 
+    document.getElementById("lastname").value = "" // borramos el value
 
+  }
+
+}
 
 function insertarUsuario(name, lastname) {
   console.log("Nombre:" + name, "apellido:" + lastname);
@@ -30,3 +37,4 @@ function insertarUsuario(name, lastname) {
 
   userlist.appendChild(li)  // agregamos el li al ul
 }
+
